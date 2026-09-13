@@ -48,7 +48,7 @@ generate = sl.button("Generate Questions", type="primary", use_container_width=T
 if generate:
 
     if sub is None:
-        sl.warning("⚠️ Please select a subject.")
+        sl.warning("⚠️ Please select a subajaxr.")
     
     elif topic.strip() == "":
         sl.warning("⚠️ Please enter a topic.")
