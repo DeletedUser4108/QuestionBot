@@ -1,4 +1,6 @@
 import streamlit as sl
+#if sl.button("Go back to Setup Page", icon=":material/arrow_back:", type="tertiary", use_container_width=False, help="Click to go back to the Setup page to change your selections"):
+#    sl.switch_page("pages/setup.py")
 sl.toast("Welcome to the Practice Page! Here you can practice questions generated from your selected topics and difficulty levels.", icon=":material/quiz:", duration="long")
 sl.title("Practice Page", icon=":material/target:", text_alignment="center", help="This page allows you to practice questions generated from your selected topics and difficulty levels.", anchor=False)
 
