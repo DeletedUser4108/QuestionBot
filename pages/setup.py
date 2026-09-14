@@ -16,7 +16,8 @@ p,c,m= "Physics", "Chemistry", "Mathematics"
 sub = sl.pills("Select your subject", [p, c, m], selection_mode="single", help="Choose the subject for which you want to generate questions")#index=None,placeholder="Select the Subject", help="Choose the subject for which you want to generate questions"
 ##if sub:
 ##sl.info(f"📚 Subject selected: **{sub}**")
-diff = sl.pills("Select the difficulty level", ["NCERT", "JEE MAINS", ":shimmer[JEE ADVANCED]"], selection_mode="single", help="Choose the difficulty level for the questions")
+ncert,jm,ja="NCERT", "JEE MAINS", "JEE ADVANCED"
+diff = sl.pills("Select the difficulty level", [ncert, jm, ja], selection_mode="single", help="Choose the difficulty level for the questions")
 num_ques = sl.slider("Select the number of question required",1,25,6)
 book=""
 
@@ -26,17 +27,17 @@ if user_book_choice == "Yes":
     upload = sl.file_uploader("Upload your study material (PDF)", type=["pdf"], max_upload_size=50, accept_multiple_files=False, help="Upload a PDF file containing your study material to generate questions from it")
 elif user_book_choice == "No":
     upload= None
-    if diff == "NCERT":
+    if diff == ncert:
         sl.info("For NCERT level questions, the questions will be generated from the NCERT textbooks.")
-    if  diff == ":shimmer[JEE ADVANCED]" or diff =="JEE MAINS":
+    if  diff == ja or diff == jm:
         
-        if sub == "Physics":
+        if sub == p:
             #book = sl.selectbox("Please choose the book out of the options:",["HC Verma", "IE Irodov", "Resnick Halliday"], help="Choose the book from which you want to generate questions")
             book = sl.pills("Please choose the book out of the options:",["HC Verma", "IE Irodov", "Resnick Halliday"], selection_mode="multi", help="Choose the book from which you want to generate questions")
-        if sub == "Chemistry":
+        if sub == c:
             book = sl.pills("Please choose the book out of the options:",["M.S Chouhan", "N. Avasthi", "V.K. Jaiswal"], selection_mode="single", help="Choose the book from which you want to generate questions")
             #book = sl.selectbox("Please choose the book out of the options:",["M.S Chouhan", "N. Avasthi", "V.K. Jaiswal"], help="Choose the book from which you want to generate questions")
-        if sub == "Mathematics":
+        if sub == m:
             #book = sl.selectbox("Please choose the book out of the options:",["Black Book", "Cengage", "Tata McGraw-Hill"], help="Choose the book from which you want to generate questions")
             book = sl.pills("Please choose the book out of the options:",["Black Book", "Cengage", "Tata McGraw-Hill"], selection_mode="multi", help="Choose the book from which you want to generate questions")
         
@@ -48,7 +49,7 @@ generate = sl.button("Generate Questions", type="primary", use_container_width=T
 if generate:
 
     if sub is None:
-        sl.warning("⚠️ Please select a subajaxr.")
+        sl.warning("⚠️ Please select a subject.")
     
     elif topic.strip() == "":
         sl.warning("⚠️ Please enter a topic.")
