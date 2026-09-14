@@ -2,10 +2,10 @@ import streamlit as sl
 sl.toast("Welcome to the Practice Page! Here you can practice questions generated from your selected topics and difficulty levels.", icon=":material/quiz:", duration="long")
 sl.title("Practice Page", icon=":material/target:", text_alignment="center", help="This page allows you to practice questions generated from your selected topics and difficulty levels.", anchor=False)
 
-sub = sl.session_state.get("sub", "Please select a subject in the Setup page.")
+sub = sl.session_state.get("subject", "Please select a subject in the Setup page.")
 topic = sl.session_state.get("topic", "Please enter a topic in the Setup page.")
-diff = sl.session_state.get("diff", "Please select a difficulty level in the Setup page.")
-num_ques = sl.session_state.get("num_ques", "Please select the number of questions in the Setup page.")
+diff = sl.session_state.get("difficulty", "Please select a difficulty level in the Setup page.")
+num_ques = sl.session_state.get("number_questions", "Please select the number of questions in the Setup page.")
 book = sl.session_state.get("book", "Please select a book in the Setup page.")
 upload = sl.session_state.get("upload", "Please upload a file in the Setup page.")
 
@@ -13,5 +13,7 @@ sl.info(f":green[**Subject:**] {sub}")
 sl.info(f":red[**Topic:**] {topic}")
 sl.info(f":yellow[**Difficulty:**] {diff}")
 sl.info(f":orange[**Number of Questions:**] {num_ques}")
-sl.info(f":yellow[**Book:**] {book}")
-sl.info(f":gray[**Uploaded File:**] {upload}")
+if upload==None:
+    sl.info(f":yellow[**Book:**] {book}")
+else:
+    sl.info(f":gray[**Uploaded File:**] {upload}")

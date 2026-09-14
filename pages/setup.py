@@ -14,8 +14,6 @@ sl.markdown('''
 p,c,m= "Physics", "Chemistry", "Mathematics"
 
 sub = sl.pills("Select your subject", [p, c, m], selection_mode="single", help="Choose the subject for which you want to generate questions")#index=None,placeholder="Select the Subject", help="Choose the subject for which you want to generate questions"
-##if sub:
-##sl.info(f"📚 Subject selected: **{sub}**")
 ncert,jm,ja="NCERT", "JEE MAINS", "JEE ADVANCED"
 diff = sl.pills("Select the difficulty level", [ncert, jm, ja], selection_mode="single", help="Choose the difficulty level for the questions")
 num_ques = sl.slider("Select the number of question required",1,25,6)
@@ -29,6 +27,12 @@ elif user_book_choice == "No":
     upload= None
     if diff == ncert:
         sl.info("For NCERT level questions, the questions will be generated from the NCERT textbooks.")
+        if sub == p:
+            book = "NCERT_Phy_File"
+        if sub == c:
+            book = "NCERT_Chem_File"
+        if sub == m:
+            book = "NCERT_MATH_File"
     if  diff == ja or diff == jm:
         
         if sub == p:
@@ -64,10 +68,10 @@ if generate:
         #sl.write("**Topic:**", topic)
         #sl.write("**Difficulty:**", diff)
         #sl.write("**Number of Questions:**", num_ques)
-        sl.session_state.sub = sub
+        sl.session_state.subject = sub
         sl.session_state.topic = topic
-        sl.session_state.diff = diff
-        sl.session_state.num_ques = num_ques
+        sl.session_state.difficulty = diff
+        sl.session_state.number_questions = num_ques
         sl.session_state.book = book
         sl.session_state.upload = upload
         sl.switch_page("pages/practice.py")
