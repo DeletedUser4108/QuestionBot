@@ -6,15 +6,12 @@ sl.markdown('''
 
 📚 Generate questions from :color[your study material]{foreground='#ff5050'}        
 🎯 Choose your :orange[difficulty]    
-📚 Generate questions from :color[your study material]{foreground='#ff5050'}        
-🎯 Choose your :orange[difficulty]    
 📊 Track your :violet[performance]''', text_alignment="center" )
 
-with sl.container(border=True,):
-    col1,col2 = sl.columns(2)
-with sl.container(border=True,):
-    col1,col2 = sl.columns(2)
 
+
+with sl.container(border=True):
+    col1,col2 = sl.columns(2)
     p,c,m= "Physics", "Chemistry", "Mathematics"
     with col1:
         sub = sl.pills("**Select Your Subject**", [p, c, m], selection_mode="single", help="Choose the subject for which you want to generate questions")#index=None,placeholder="Select the Subject", help="Choose the subject for which you want to generate questions"  
@@ -42,28 +39,21 @@ with sl.container(border=True,):
         if  diff == ja or diff == jm:
         
             if sub == p:
-            if sub == p:
             #book = sl.selectbox("Please choose the book out of the options:",["HC Verma", "IE Irodov", "Resnick Halliday"], help="Choose the book from which you want to generate questions")
-                book = sl.pills("Please choose the book out of the options:",["HC Verma", "IE Irodov", "Resnick Halliday"], selection_mode="multi", help="Choose the book from which you want to generate questions")
-            if sub == c:
-                book = sl.pills("Please choose the book out of the options:",["M.S Chouhan", "N. Avasthi", "V.K. Jaiswal"], selection_mode="single", help="Choose the book from which you want to generate questions")
                 book = sl.pills("Please choose the book out of the options:",["HC Verma", "IE Irodov", "Resnick Halliday"], selection_mode="multi", help="Choose the book from which you want to generate questions")
             if sub == c:
                 book = sl.pills("Please choose the book out of the options:",["M.S Chouhan", "N. Avasthi", "V.K. Jaiswal"], selection_mode="single", help="Choose the book from which you want to generate questions")
             #book = sl.selectbox("Please choose the book out of the options:",["M.S Chouhan", "N. Avasthi", "V.K. Jaiswal"], help="Choose the book from which you want to generate questions")
             if sub == m:
-            if sub == m:
             #book = sl.selectbox("Please choose the book out of the options:",["Black Book", "Cengage", "Tata McGraw-Hill"], help="Choose the book from which you want to generate questions")
-                book = sl.pills("Please choose the book out of the options:",["Black Book", "Cengage", "Tata McGraw-Hill"], selection_mode="multi", help="Choose the book from which you want to generate questions")
                 book = sl.pills("Please choose the book out of the options:",["Black Book", "Cengage", "Tata McGraw-Hill"], selection_mode="multi", help="Choose the book from which you want to generate questions")
         
     topic =sl.text_input("**Enter the topic you want to generate questions from**", placeholder="Example: Coordinate Geometry", help="Type the topic name here")
         
 
     generate = sl.button("Generate Questions", type="primary", use_container_width=True, help="Click to generate questions based on your selections")
-    generate = sl.button("Generate Questions", type="primary", use_container_width=True, help="Click to generate questions based on your selections")
 
-    if generate:
+    
     if generate:
 
         if sub is None:
@@ -95,19 +85,5 @@ with sl.container(border=True,):
             sl.session_state.book = book
             sl.session_state.upload = upload
             sl.switch_page("pages/practice.py")
-        else:
-            sl.success("✅ All inputs are valid!")
-                #sl.write("### Your Question Settings")
-                #sl.write("**Subject:**", sub)
-                #sl.write("**Topic:**", topic)
-                #sl.write("**Difficulty:**", diff)
-                #sl.write("**Number of Questions:**", num_ques)
-            sl.session_state.subject = sub
-            sl.session_state.topic = topic
-            sl.session_state.difficulty = diff
-            sl.session_state.number_questions = num_ques
-            sl.session_state.book = book
-            sl.session_state.upload = upload
-            sl.switch_page("pages/practice.py")
-
+        
 sl.caption("Made by <u>:orange[**Darsh Bagla**]</u> | :blue[**BGS NPS Computer Science Project**] | :orange[_All rights reserved_] ", text_alignment="center", unsafe_allow_html=True)
