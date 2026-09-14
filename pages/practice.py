@@ -1,7 +1,6 @@
 import streamlit as sl
-sl.toast("Welcome to the Practice Page! Here you can practice questions generated from your selected topics and difficulty levels.", icon=":material/quiz:", duration="short")
+sl.toast("Welcome to the Practice Page! Here you can practice questions generated from your selected topics and difficulty levels.", icon=":material/quiz:", duration="long")
 sl.title("Practice Page", icon=":material/target:", text_alignment="center", help="This page allows you to practice questions generated from your selected topics and difficulty levels.", anchor=False)
-sl.write("Your questions will appear here.")
 
 sub = sl.session_state.get("sub", "Please select a subject in the Setup page.")
 topic = sl.session_state.get("topic", "Please enter a topic in the Setup page.")
