@@ -4,6 +4,7 @@ setup_page = sl.Page(
     "pages/setup.py",
     title="Setup",
     icon=":material/settings:"
+    
 )
 
 practice_page = sl.Page(
